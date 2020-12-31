@@ -1,0 +1,53 @@
+{% extends "base.html"%}
+{% block content %}
+<h1>Vignere</h1>
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Vigenère Cipher Encrpytion</legend>
+                <p>Vigenere Cipher is a method of encrypting alphabetic text. 
+                    It uses a simple form of polyalphabetic substitution.
+                    A polyalphabetic cipher is any cipher based on substitution, using multiple substitution alphabets .
+                    The encryption of the original text is done using the Vigenère square or Vigenère table. </p>
+                <div class="form-group">
+                    {{ form.plaintext.label(class="form-control-label") }}
+                    {% if form.plaintext.errors %}
+                        {{ form.plaintext(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.plaintext.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.plaintext(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form.key.label(class="form-control-label") }}
+                    {% if form.key.errors %}
+                        {{ form.key(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.key.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.key(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div><br>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </fieldset>
+    </form>
+    {% if results != None%}
+    <h1>{{results}}</h1>
+
+    {% endif %}
+            
+            
+            
+</div>
+{% endblock %}

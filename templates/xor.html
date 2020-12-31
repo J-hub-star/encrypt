@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">XOR Encrpytion</legend>
+                <p>XOR Encryption is an encryption method used to encrypt data and is hard to crack by brute-force method,
+                    i.e generating random encryption keys to match with the correct one. </p>
+                <div class="form-group">
+                    {{ form.plaintext.label(class="form-control-label") }}
+                    {% if form.plaintext.errors %}
+                        {{ form.plaintext(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.plaintext.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.plaintext(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </fieldset>
+    </form>
+    {% if results != None%}
+    <h1>{{results}}</h1>
+
+    {% endif %}
+            
+            
+            
+</div>
+    
+
+{% endblock %}
